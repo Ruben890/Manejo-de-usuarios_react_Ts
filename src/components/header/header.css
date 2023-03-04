@@ -1,0 +1,41 @@
+/**? Estilos del header */
+.header_admin {
+    background-color: #009ddd;
+}
+
+.header_admin>nav>ul {
+    padding: 8px;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: end;
+    list-style: none;
+}
+
+.header_admin>nav>ul>li>i {
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.header_admin>nav>ul li i:hover {
+    transition: color 0.5s;
+    color: #3a3132;
+}
+
+.cerrar_seccion {
+    position: fixed;
+    right: 5px;
+    padding: 18px;
+    background-color: #fff;
+    box-shadow: 5px 8px 5px rgba(0, 2, 2, 0.178);
+    border-radius: 5px;
+}
+
+.cerrar_seccion .btn {
+    background-color: #386dbd;
+    color: #fff;
+}
+
+.cerrar_seccion .btn:hover {
+    background-color: #3a3132;
+}

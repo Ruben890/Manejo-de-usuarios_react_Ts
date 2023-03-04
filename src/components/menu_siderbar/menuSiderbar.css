@@ -1,0 +1,35 @@
+.menu_sidebar {
+    bottom: 0px;
+    position: absolute;
+    height: 89.9%;
+    width: 4rem;
+    background-color: #0f4571;
+}
+
+.menu_sidebar>nav>ul {
+    color: #fff;
+    list-style: none;
+}
+.menu_sidebar > nav ul li:hover {
+    background-color: #386dbd;
+    cursor: pointer;
+    transition: background-color  0.5s;
+}
+
+.menu_sidebar > nav ul li:hover i{
+    color: #3a3132;
+}
+
+.menu_sidebar>nav>ul li i {
+    text-align: center;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+
+@media screen and (max-width:600px) {
+
+    .menu_sidebar {
+        height: 93%;
+    }
+}

@@ -1,0 +1,72 @@
+ .Agregar .form-group {
+     display: flex;
+     justify-content: center;
+ }
+
+ .Agregar .form-group>div {
+     width: 50%;
+ }
+
+ .buttom1 {
+     margin-top: 2rem;
+     display: flex;
+     justify-content: center;
+     width: 100%;
+ }
+
+ .buttom1 .btn {
+     width: 15rem;
+ }
+
+ .Agregar .buttom {
+     display: none;
+ }
+
+ .Agregar h3 {
+     display: flex;
+     justify-content: center;
+     margin-bottom: 1rem;
+ }
+
+ @media screen and (max-width: 600px) {
+
+
+     .Agregar .form-group>div {
+         display: block;
+         justify-content: center;
+         align-items: center;
+         width: 100%;
+     }
+
+
+
+
+     .Agregar {
+         display: flex;
+         justify-content: center;
+     }
+
+     .Agregar h3 {
+         display: none;
+     }
+
+     .form-group {
+         height: 40rem;
+         width: 75%;
+         overflow: auto;
+         display: block;
+     }
+
+     .Agregar .buttom {
+         position: relative;
+         left: 2.5rem;
+     }
+
+     .Agregar .buttom .btn {
+         width: 12.3rem;
+     }
+
+     .Agregar .buttom1 {
+         display: none;
+     }
+ }
