@@ -4,12 +4,14 @@ interface Login {
   usernames: string;
   password: string;
   is_Authenticated: boolean;
+  message: string;
 }
 
 const initialState: Login = {
   usernames: "Admin",
   password: "Admin1098",
   is_Authenticated: false,
+  message: "",
 };
 
 export const loginSlice = createSlice({
@@ -20,7 +22,10 @@ export const loginSlice = createSlice({
       const { usernames, password } = action.payload;
       if (usernames === state.usernames && password === state.password) {
         state.is_Authenticated = true;
+        state.message = "Authentication success";
         localStorage.setItem("loggedIn", "true");
+      } else {
+        state.message = "contraseña o usuario incorrecto";
       }
     },
   },

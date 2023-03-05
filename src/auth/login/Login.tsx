@@ -2,9 +2,15 @@ import { useShowPassword } from "../../hooks/useShowPassowrd";
 import { useState, FormEvent } from "react";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../../feactures/auth/actions_login";
+import { useAppSelector } from "../../apps/hook";
+import { Admin } from "../../page/admin/admin";
 export const Login = () => {
   const [user, setUser] = useState({ usernames: "", password: "" });
   const dispatch = useDispatch();
+  const is_Authenticated = useAppSelector(
+    (state) => state.admin.is_Authenticated
+  );
+  const message = useAppSelector((state) => state.admin.message);
 
   const handleChange = (event: { target: HTMLInputElement }) => {
     setUser({
@@ -12,7 +18,7 @@ export const Login = () => {
       [event.target.name]: event.target.value,
     });
   };
-  
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(loginSuccess(user));
@@ -20,10 +26,17 @@ export const Login = () => {
 
   const { showPassword, password_hidden } = useShowPassword();
   return (
-    <main className="container Login d-flex">
-      <form onSubmit={handleSubmit} className="form-group w-50 mt-5">
+    <main className="container Login d-flex justify-content-center">
+      <form
+        onSubmit={handleSubmit}
+        className="form-group w-50"
+        style={{ position: "relative", top: "6rem" }}
+      >
+        <fieldset className="d-flex justify-content-center  mb-5">
+          <h1>login Admin</h1>
+        </fieldset>
         <input
-          className="form-control"
+          className="form-control mb-3"
           type="text"
           name="usernames"
           value={user.usernames}
@@ -31,26 +44,33 @@ export const Login = () => {
           placeholder="username"
         />
         <input
-          className="form-control"
+          className="form-control mb-1"
           type={showPassword ? "text" : "password"}
           name="password"
           value={user.password}
           onChange={handleChange}
           placeholder="password"
         />
+        <div className="message text-danger">
+          <p>{message}</p>
+        </div>
 
-        <div>
+        <div className="d-flex">
           <input
             type="checkbox"
             checked={showPassword}
             onChange={password_hidden}
           />
-          <p>show password</p>
+          <p className="ms-2" style={{ position: "relative", top: "0.4rem" }}>
+            show password
+          </p>
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Iniciar sesión
-        </button>
+        <div className="d-flex justify-content-center mt-3">
+          <button type="submit" className="btn btn-primary w-50">
+            Iniciar sesión
+          </button>
+        </div>
       </form>
     </main>
   );
