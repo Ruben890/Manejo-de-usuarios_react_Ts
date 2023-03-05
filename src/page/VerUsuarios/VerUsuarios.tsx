@@ -12,8 +12,8 @@ export const VerUsuarios = () => {
     (state) => state.admin.is_Authenticated
   );
 
-  const itemsPerPage = 5;
-  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 5; // catidad de usuario a mostar po pagina
+  const [currentPage, setCurrentPage] = useState(0); //estado de la pagina
 
   const handlePageClick = (data: { selected: number }) => {
     setCurrentPage(data.selected);
@@ -22,7 +22,7 @@ export const VerUsuarios = () => {
   const offset = currentPage * itemsPerPage;
   const itemsToDisplay = usersState.slice(offset, offset + itemsPerPage);
 
-  return is_Authenticated ? (
+  return is_Authenticated ? ( ///esto condicion es para saber si el usuario esta aqutenticado poder mostrar la pagina //
     <>
       <Header />
       <MenuSidebar />
@@ -40,11 +40,13 @@ export const VerUsuarios = () => {
                       left: "0.5rem",
                     }}
                   >
-                  {user.id}
+                    {user.id}
                   </h4>
                 </div>
                 <hr />
-                <p>{user.name}</p>
+                <p className="d-flex">
+                  {user.name} {user.last_name} {user.last_name2}
+                </p>
                 <p>{user.email}</p>
                 <p>{user.sex}</p>
               </div>

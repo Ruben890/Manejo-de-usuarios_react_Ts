@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 interface Users {
   id: number;
   name: string;
+  last_name: string;
+  last_name2: string;
   email: string;
   sex: string;
 }
@@ -17,9 +19,19 @@ const initialState: UserState = {
   message: "",
 };
 // funcion para validar si alguno de estos campos esta vacio
-const checkEmptyFields = (name: string, email: string, sex: string) => {
+const checkEmptyFields = (
+  name: string,
+  email: string,
+  sex: string,
+  last_name: string,
+  last_name2: string
+) => {
   if (name === "") {
     return "name";
+  } else if (last_name === "") {
+    return "last_name";
+  } else if (last_name2 === "") {
+    return "last_name";
   } else if (email === "") {
     return "email";
   } else if (sex === "") {
@@ -34,8 +46,14 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     addUsers: (state, action) => {
-      const { name, email, sex } = action.payload; /// aqui esta recibiendo los datps que manda el susuario
-      const emptyField = checkEmptyFields(name, email, sex); //esta funcon valida los datos que mando el usuario
+      const { name, email, sex, last_name, last_name2 } = action.payload; /// aqui esta recibiendo los datps que manda el susuario
+      const emptyField = checkEmptyFields(
+        name,
+        email,
+        sex,
+        last_name,
+        last_name2
+      ); //esta funcon valida los datos que mando el usuario
       if (emptyField !== "none") {
         state.message = `Por favor, completa el campo ${emptyField}.`;
         return state;

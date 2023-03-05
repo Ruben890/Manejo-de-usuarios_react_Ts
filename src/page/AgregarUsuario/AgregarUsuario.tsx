@@ -10,6 +10,7 @@ export const AgregarUsuario = () => {
   const is_Authenticated = useAppSelector(
     (state) => state.admin.is_Authenticated
   );
+
   const message = useAppSelector((state) => state.users.message);
   const [users, setUsers] = useState({
     name: "",
@@ -61,12 +62,16 @@ export const AgregarUsuario = () => {
                 type="text"
                 className="form-control mb-3"
                 placeholder="Apellido"
+                name="last_name"
+                onChange={handleChange}
               />
               <input
                 required
                 type="text"
                 className="form-control mb-3"
                 placeholder="Segundo Apellido"
+                name="last_name2"
+                onChange={handleChange}
               />
               <input
                 required
