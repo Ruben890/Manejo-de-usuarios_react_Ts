@@ -1,7 +1,9 @@
 import { Header } from "../../components/header/header";
 import { MenuSidebar } from "../../components/menu_siderbar/menuSiderbar";
 import "./AgregarUsuario.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
+import { addUsers } from "../../feactures/UserManager/userManage";
+import { useDispatch } from "react-redux";
 import { Login } from "../../auth/login/Login";
 
 interface User {
@@ -10,6 +12,33 @@ interface User {
 }
 
 export const AgregarUsuario = () => {
+  const [users, setUsers] = useState({
+    name: "",
+    email: "",
+    sex: "",
+  });
+  const Dispache = useDispatch();
+
+  const genericID = () => Math.floor(Math.random() * 999) + 1;
+
+  const handleChange = (event: {
+    target: HTMLInputElement | HTMLSelectElement;
+  }) => {
+    setUsers({
+      ...users,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    Dispache(
+      addUsers({
+        ...users,
+        id: genericID(),
+      })
+    );
+  };
 
   const [user, setUser] = useState<User>({ username: "", password: "" });
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
@@ -34,14 +63,16 @@ export const AgregarUsuario = () => {
       <Header />
       <MenuSidebar />
       <main className="container">
-        <form className="Agregar">
+        <form className="Agregar" onSubmit={handleSubmit}>
           <h3>Agregar Nuevo Usuarios</h3>
           <div className="form-group">
             <div className="d-block p-3">
               <input
+                name="name"
                 type="text"
                 className="form-control mb-3"
                 placeholder="Nombre"
+                onChange={handleChange}
               />
               <input
                 type="text"
@@ -65,7 +96,11 @@ export const AgregarUsuario = () => {
               />
 
               <label className="form-label">Sexo:</label>
-              <select className="form-select">
+              <select
+                className="form-select"
+                name="sex"
+                onChange={handleChange}
+              >
                 <option value="Femenino">Femenino</option>
                 <option value="Masculino">Masculino</option>
               </select>
@@ -83,6 +118,8 @@ export const AgregarUsuario = () => {
                 placeholder="Teléfono"
               />
               <input
+                onChange={handleChange}
+                name="email"
                 type="email"
                 className="form-control mb-1"
                 placeholder="Correo electrónico"
