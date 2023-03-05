@@ -9,10 +9,9 @@ export const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("loggedIn");
-    localStorage.removeItem("user");
     window.location.href = "/";
   };
-  
+
   return (
     <>
       <header className="header_admin">

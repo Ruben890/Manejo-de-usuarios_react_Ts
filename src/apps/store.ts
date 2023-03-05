@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../feactures/UserManager/userManage";
+import LoginReducer from "../feactures/auth/actions_login";
 export const store = configureStore({
   reducer: {
     users: userReducer,
+    admin: LoginReducer,
   },
 });
 

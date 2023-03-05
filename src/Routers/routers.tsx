@@ -7,10 +7,10 @@ function Routers() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/" element={<Admin />} />
         <Route path="/AgregarUsuario" element={<AgregarUsuario />} />
         <Route path="/VerUsuarios" element={<VerUsuarios />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

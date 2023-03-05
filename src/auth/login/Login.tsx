@@ -1,61 +1,47 @@
 import { useShowPassword } from "../../hooks/useShowPassowrd";
-import { useState } from "react";
-
-interface User {
-  username: string;
-  password: string;
-}
-
+import { useState, FormEvent } from "react";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../../feactures/auth/actions_login";
 export const Login = () => {
-  const { showPassword, password_hidden } = useShowPassword();
+  const [user, setUser] = useState({ usernames: "", password: "" });
+  const dispatch = useDispatch();
 
-  const [user, setUser] = useState<User>({ username: "", password: "" });
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
+  const handleChange = (event: {
+    target: HTMLInputElement | HTMLSelectElement;
+  }) => {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    });
   };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Verificar la información de inicio de sesión
-    if (user.username === "admin" && user.password === "admin1098") {
-      localStorage.setItem("loggedIn", "true");
-      localStorage.setItem("user", JSON.stringify(user));
-      window.location.href = "/admin";
-    }
+    dispatch(loginSuccess(user));
   };
 
   return (
-    <>
-      <main className="Login container d-flex justify-content-center">
-        <form className="form-group w-50 p-3" onSubmit={handleSubmit}>
-          <h3>Login</h3>
-          <div>
-            <label className="form=label">Username</label>
-            <input
-              type="text"
-              name="username"
-              value={user.username}
-              onChange={handleInputChange}
-              placeholder="Username"
-              className="form-control mb-3"
-            />
-            <label className="form-label">Password</label>
-            <input
-              placeholder="Password"
-              className="form-control mb-3"
-              type="password"
-              name="password"
-              value={user.password}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="buttom">
-            <button className="btn btn-primary">Iniciar seccion</button>
-          </div>
-        </form>
-      </main>
-    </>
+    <main className="container Login d-flex">
+      <form onSubmit={handleSubmit} className="form-group w-50 mt-5">
+        <input
+          className="form-control"
+          type="text"
+          name="usernames"
+          value={user.usernames}
+          onChange={handleChange}
+          placeholder="username"
+        />
+        <input
+          className="form-control"
+          type="password"
+          name="password"
+          value={user.password}
+          onChange={handleChange}
+          placeholder="password"
+        />
+        <button type="submit" className="btn btn-primary">
+          Iniciar sesión
+        </button>
+      </form>
+    </main>
   );
 };

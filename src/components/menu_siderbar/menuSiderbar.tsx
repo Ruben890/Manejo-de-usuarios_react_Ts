@@ -7,7 +7,7 @@ export const MenuSidebar = () => {
       <div className="menu_sidebar">
         <nav>
           <ul style={{ padding: "0px" }}>
-            <Link to="/admin " title="AgregarUsuario">
+            <Link to="/" title="AgregarUsuario">
               <li className="p-4">
                 <i className="bi bi-house" title="Home_page"></i>
               </li>

@@ -1,38 +1,20 @@
 import { MenuSidebar } from "../../components/menu_siderbar/menuSiderbar";
 import { Header } from "../../components/header/header";
-import { useState, useEffect } from "react";
 import { Login } from "../../auth/login/Login";
-
-interface User {
-  username: string;
-  password: string;
-}
+import { useAppSelector } from "../../apps/hook";
 
 export const Admin = () => {
-  const [user, setUser] = useState<User>({ username: "", password: "" });
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-
-  useEffect(() => {
-    const loggedIn = localStorage.getItem("loggedIn");
-    const userString = localStorage.getItem("user");
-    if (loggedIn && userString) {
-      setLoggedIn(true);
-      setUser(JSON.parse(userString));
-    } else {
-      setLoggedIn(false);
-    }
-  }, []);
-
-  if (!loggedIn) {
-    return <Login />;
-  }
-
-  return (
+  const is_Authenticated = useAppSelector(
+    (state) => state.admin.is_Authenticated
+  );
+  return is_Authenticated ? (
     <>
       {/* Header */}
       <Header />
       {/* menu_sidebar  */}
       <MenuSidebar />
     </>
+  ) : (
+    <Login />
   );
 };

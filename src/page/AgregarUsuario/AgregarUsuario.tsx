@@ -1,23 +1,22 @@
 import { Header } from "../../components/header/header";
 import { MenuSidebar } from "../../components/menu_siderbar/menuSiderbar";
 import "./AgregarUsuario.css";
-import { useState, useEffect, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import { addUsers } from "../../feactures/UserManager/userManage";
 import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../apps/hook";
 import { Login } from "../../auth/login/Login";
 
-interface User {
-  username: string;
-  password: string;
-}
-
 export const AgregarUsuario = () => {
+  const is_Authenticated = useAppSelector(
+    (state) => state.admin.is_Authenticated
+  );
   const [users, setUsers] = useState({
     name: "",
     email: "",
     sex: "",
   });
-  const Dispache = useDispatch();
+  const Dispatch = useDispatch();
 
   const genericID = () => Math.floor(Math.random() * 999) + 1;
 
@@ -32,33 +31,14 @@ export const AgregarUsuario = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    Dispache(
+    Dispatch(
       addUsers({
         ...users,
         id: genericID(),
       })
     );
   };
-
-  const [user, setUser] = useState<User>({ username: "", password: "" });
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-
-  useEffect(() => {
-    const loggedIn = localStorage.getItem("loggedIn");
-    const userString = localStorage.getItem("user");
-    if (loggedIn && userString) {
-      setLoggedIn(true);
-      setUser(JSON.parse(userString));
-    } else {
-      setLoggedIn(false);
-    }
-  }, []);
-
-  if (!loggedIn) {
-    return <Login />;
-  }
-
-  return (
+  return is_Authenticated ? (
     <>
       <Header />
       <MenuSidebar />
@@ -149,5 +129,7 @@ export const AgregarUsuario = () => {
         </form>
       </main>
     </>
+  ) : (
+    <Login />
   );
 };
