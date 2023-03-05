@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./header.css";
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);

@@ -3,13 +3,9 @@ import { useState, FormEvent } from "react";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../../feactures/auth/actions_login";
 import { useAppSelector } from "../../apps/hook";
-import { Admin } from "../../page/admin/admin";
 export const Login = () => {
   const [user, setUser] = useState({ usernames: "", password: "" });
   const dispatch = useDispatch();
-  const is_Authenticated = useAppSelector(
-    (state) => state.admin.is_Authenticated
-  );
   const message = useAppSelector((state) => state.admin.message);
 
   const handleChange = (event: { target: HTMLInputElement }) => {

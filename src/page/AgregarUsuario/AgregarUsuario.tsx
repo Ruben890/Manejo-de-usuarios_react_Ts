@@ -74,7 +74,6 @@ export const AgregarUsuario = () => {
                 className="form-control mb-3"
                 placeholder="Edad"
               />
-
               <label className="form-label">Sexo:</label>
               <select
                 className="form-select"

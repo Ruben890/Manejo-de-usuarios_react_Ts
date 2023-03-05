@@ -25,7 +25,7 @@ export const loginSlice = createSlice({
         state.message = "Authentication success";
         localStorage.setItem("loggedIn", "true");
       } else {
-        state.message = "contraseña o usuario incorrecto";
+        state.message = "contraseña o usuario es  incorrecto";
       }
     },
   },

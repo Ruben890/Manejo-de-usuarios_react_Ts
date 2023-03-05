@@ -1,0 +1,53 @@
+/**? card de los usuarios */
+.VerSusuarios section {
+    display: inline-flex;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.card {
+    padding: 15px;
+}
+
+/**? pie de pagina o paginacion */
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination li {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.active {
+    background-color: #05d3f8;
+    border-radius: 100%;
+    padding: 5px;
+    height: 34px;
+    width: 30px;
+    text-align: center;
+}
+
+.previous,
+.next {
+    border-radius: 5px;
+    padding: 8px;
+    background-color: #0f4571;
+}
+
+.previous:hover,
+.next:hover {
+    background-color: #009ddd;
+}
+
+.previous:hover a,
+.next:hover a {
+    color: #3a3132;
+}
+
+.previous a,
+.next a {
+    text-decoration: none;
+    color: #fff;
+}
