@@ -6,19 +6,19 @@ export const Login = () => {
   const [user, setUser] = useState({ usernames: "", password: "" });
   const dispatch = useDispatch();
 
-  const handleChange = (event: {
-    target: HTMLInputElement | HTMLSelectElement;
-  }) => {
+  const handleChange = (event: { target: HTMLInputElement }) => {
     setUser({
       ...user,
       [event.target.name]: event.target.value,
     });
   };
+  
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(loginSuccess(user));
   };
 
+  const { showPassword, password_hidden } = useShowPassword();
   return (
     <main className="container Login d-flex">
       <form onSubmit={handleSubmit} className="form-group w-50 mt-5">
@@ -32,12 +32,22 @@ export const Login = () => {
         />
         <input
           className="form-control"
-          type="password"
+          type={showPassword ? "text" : "password"}
           name="password"
           value={user.password}
           onChange={handleChange}
           placeholder="password"
         />
+
+        <div>
+          <input
+            type="checkbox"
+            checked={showPassword}
+            onChange={password_hidden}
+          />
+          <p>show password</p>
+        </div>
+
         <button type="submit" className="btn btn-primary">
           Iniciar sesión
         </button>
