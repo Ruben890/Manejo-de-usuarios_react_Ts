@@ -40,7 +40,7 @@ export const AgregarUsuario = () => {
     );
   };
 
-  return is_Authenticated ? (///esto condicion es para saber si el usuario esta aqutenticado poder mostrar la pagina //
+  return is_Authenticated ? ( ///esto condicion es para saber si el usuario esta aqutenticado poder mostrar la pagina //
     <>
       <Header />
       <MenuSidebar />
@@ -85,13 +85,13 @@ export const AgregarUsuario = () => {
                 className="form-control mb-3"
                 placeholder="Edad"
               />
-              <label className="form-label">Sexo:</label>
               <select
                 required
                 className="form-select"
                 name="sex"
                 onChange={handleChange}
               >
+                <option value="Sexo">Sexo</option>
                 <option value="Femenino">Femenino</option>
                 <option value="Masculino">Masculino</option>
               </select>

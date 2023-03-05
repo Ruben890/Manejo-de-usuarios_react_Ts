@@ -34,7 +34,7 @@ const checkEmptyFields = (
     return "last_name";
   } else if (email === "") {
     return "email";
-  } else if (sex === "") {
+  } else if (sex === "" || sex === "Sexo") {
     return "Sexo";
   } else {
     return "none";
