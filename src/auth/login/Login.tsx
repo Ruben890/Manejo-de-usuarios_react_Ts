@@ -32,12 +32,13 @@ export const Login = () => {
           <h1>login Admin</h1>
         </fieldset>
         <input
-          className="form-control mb-3"
+          className="form-control mb-3 is_valid"
           type="text"
           name="usernames"
           value={user.usernames}
           onChange={handleChange}
           placeholder="username"
+          required
         />
         <input
           className="form-control mb-1"
@@ -46,6 +47,7 @@ export const Login = () => {
           value={user.password}
           onChange={handleChange}
           placeholder="password"
+          required
         />
         <div className="message text-danger">
           <p>{message}</p>

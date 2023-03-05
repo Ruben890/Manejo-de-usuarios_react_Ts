@@ -6,11 +6,11 @@ import { addUsers } from "../../feactures/UserManager/userManage";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../apps/hook";
 import { Login } from "../../auth/login/Login";
-
 export const AgregarUsuario = () => {
   const is_Authenticated = useAppSelector(
     (state) => state.admin.is_Authenticated
   );
+  const message = useAppSelector((state) => state.users.message);
   const [users, setUsers] = useState({
     name: "",
     email: "",
@@ -38,6 +38,7 @@ export const AgregarUsuario = () => {
       })
     );
   };
+
   return is_Authenticated ? (
     <>
       <Header />
@@ -48,6 +49,7 @@ export const AgregarUsuario = () => {
           <div className="form-group">
             <div className="d-block p-3">
               <input
+                required
                 name="name"
                 type="text"
                 className="form-control mb-3"
@@ -55,27 +57,32 @@ export const AgregarUsuario = () => {
                 onChange={handleChange}
               />
               <input
+                required
                 type="text"
                 className="form-control mb-3"
                 placeholder="Apellido"
               />
               <input
+                required
                 type="text"
                 className="form-control mb-3"
                 placeholder="Segundo Apellido"
               />
               <input
+                required
                 type="number"
                 className="form-control mb-3"
                 placeholder="Cedula"
               />
               <input
+                required
                 type="number"
                 className="form-control mb-3"
                 placeholder="Edad"
               />
               <label className="form-label">Sexo:</label>
               <select
+                required
                 className="form-select"
                 name="sex"
                 onChange={handleChange}
@@ -87,16 +94,19 @@ export const AgregarUsuario = () => {
 
             <div className="d-block p-3">
               <input
+                required
                 type="text"
                 className="form-control mb-3"
                 placeholder="Direccion"
               />
               <input
+                required
                 type="tel"
                 className="form-control mb-3"
                 placeholder="Teléfono"
               />
               <input
+                required
                 onChange={handleChange}
                 name="email"
                 type="email"
@@ -104,22 +114,25 @@ export const AgregarUsuario = () => {
                 placeholder="Correo electrónico"
               />
               <label className="form-label">Estado Civil:</label>
-              <select name="estado civil" className="form-select mb-1">
+              <select name="estado civil" className="form-select mb-1" required>
                 <option value="Soltero">Soltero</option>
                 <option value="Casado">Casado</option>
               </select>
               <label className="form-label">Tiene Hijos ?</label>
-              <select name="Tienes hijo" className="form-select mb-1">
+              <select name="Tienes hijo" className="form-select mb-1" required>
                 <option value="SI">Si</option>
                 <option value="No">No</option>
               </select>
               <label className="form-label">Fecha de nacimiento:</label>
-              <input type="date" className="form-control mb3" />
+              <input required type="date" className="form-control mb3" />
             </div>
             {/* Botton de movie */}
             <div className="buttom">
               <button className="btn btn-primary">Agregar Usuario</button>
             </div>
+          </div>
+          <div className="message text-danger fs-3">
+            <p>{message}</p>
           </div>
           {/* botton de escritorio */}
           <div className="buttom1">

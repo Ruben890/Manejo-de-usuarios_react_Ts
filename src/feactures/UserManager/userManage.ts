@@ -9,10 +9,24 @@ interface Users {
 
 interface UserState {
   users: Users[];
+  message: string;
 }
 
 const initialState: UserState = {
   users: [],
+  message: "",
+};
+
+const checkEmptyFields = (name: string, email: string, sex: string) => {
+  if (name === "") {
+    return "name";
+  } else if (email === "") {
+    return "email";
+  } else if (sex === "") {
+    return "Sexo";
+  } else {
+    return "none";
+  }
 };
 
 export const userSlice = createSlice({
@@ -20,7 +34,14 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     addUsers: (state, action) => {
-      return { ...state, users: [...state.users, action.payload] };
+      const { name, email, sex } = action.payload;
+      const emptyField = checkEmptyFields(name, email, sex);
+      if (emptyField !== "none") {
+        state.message = `Por favor, completa el campo ${emptyField}.`;
+        return state;
+      } else {
+        return { ...state, users: [...state.users, action.payload] };
+      }
     },
   },
 });
