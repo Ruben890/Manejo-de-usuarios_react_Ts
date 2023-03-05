@@ -49,9 +49,14 @@ export const Login = () => {
           placeholder="password"
           required
         />
-        <div className="message text-danger">
-          <p>{message}</p>
-        </div>
+        {/* mensaje de validacion */}
+        {message === "" || message == null ? (
+          <div className="d-none"></div>
+        ) : (
+          <div className="message text-danger fs-4">
+            <p>{message}</p>
+          </div>
+        )}
 
         <div className="d-flex">
           <input

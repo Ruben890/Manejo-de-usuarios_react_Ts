@@ -131,6 +131,7 @@ export const AgregarUsuario = () => {
               <button className="btn btn-primary">Agregar Usuario</button>
             </div>
           </div>
+          {/* mensaje de validacion */}
           {message === "" || message == null ? (
             <div className="d-none"></div>
           ) : (

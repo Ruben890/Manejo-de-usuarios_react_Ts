@@ -6,7 +6,7 @@ export const Header = () => {
   const handleClick = () => {
     setIsActive(!isActive);
   };
-
+  /// funcion  de logaut
   const handleLogout = () => {
     localStorage.removeItem("loggedIn");
     window.location.href = "/";
