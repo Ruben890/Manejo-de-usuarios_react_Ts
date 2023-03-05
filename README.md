@@ -1,6 +1,13 @@
 
 
 [![Captura-de-pantalla-87.png](https://i.postimg.cc/pdSDqyJG/Captura-de-pantalla-87.png)](https://postimg.cc/94GRfmSZ)
+
+## usuario:
+<p>Admin</p>
+
+## Contraseña:
+<p>Admin1098</p>
+<hr>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
