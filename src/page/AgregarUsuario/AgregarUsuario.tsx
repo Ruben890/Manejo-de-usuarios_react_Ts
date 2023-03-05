@@ -131,9 +131,13 @@ export const AgregarUsuario = () => {
               <button className="btn btn-primary">Agregar Usuario</button>
             </div>
           </div>
-          <div className="message text-danger fs-3">
-            <p>{message}</p>
-          </div>
+          {message === "" || message == null ? (
+            <div className="d-none"></div>
+          ) : (
+            <div className="message text-danger fs-4">
+              <p>{message}</p>
+            </div>
+          )}
           {/* botton de escritorio */}
           <div className="buttom1">
             <button className="btn btn-primary">Agregar Usuario</button>
