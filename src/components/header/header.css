@@ -23,6 +23,7 @@
 }
 
 .cerrar_seccion {
+    z-index: 1;
     position: fixed;
     right: 5px;
     padding: 18px;
