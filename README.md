@@ -1,6 +1,6 @@
 
 
-
+<img src="/img.png">
 
 ## usuario:
 <p>Admin</p>
