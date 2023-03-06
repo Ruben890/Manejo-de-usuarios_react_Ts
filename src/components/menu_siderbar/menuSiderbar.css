@@ -27,9 +27,3 @@
 }
 
 
-@media screen and (max-width:600px) {
-
-    .menu_sidebar {
-        height: 100%;
-    }
-}
