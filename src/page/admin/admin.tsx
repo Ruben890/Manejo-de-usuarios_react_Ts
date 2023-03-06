@@ -7,7 +7,7 @@ export const Admin = () => {
   const is_Authenticated = useAppSelector(
     (state) => state.admin.is_Authenticated
   );
-  return is_Authenticated ? (
+  return is_Authenticated ? (///esto condicion es para saber si el usuario esta aqutenticado poder mostrar la pagina //
     <>
       {/* Header */}
       <Header />
