@@ -40,7 +40,7 @@ export const AgregarUsuario = () => {
     );
   };
 
-  return is_Authenticated ? ( ///esto condicion es para saber si el usuario esta aqutenticado poder mostrar la pagina //
+  return is_Authenticated ? ( ///esta condicion es para saber si el usuario esta autenticado y si lo estas se motrara la pagina, y si no lo esta tendra que logeaser como USERADMIN//
     <>
       <Header />
       <MenuSidebar />
