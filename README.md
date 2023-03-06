@@ -1,6 +1,6 @@
 
 
-[![Captura-de-pantalla-89.png](https://i.postimg.cc/ydNYD9fQ/Captura-de-pantalla-89.png)](https://postimg.cc/67DNS7xn)
+[![Captura-de-pantalla-89.png](https://i.postimg.cc/sX1sjzXb/Captura-de-pantalla-89.png)](https://postimg.cc/jwVGcGyh)
 
 ## usuario:
 <p>Admin</p>
